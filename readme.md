@@ -31,7 +31,8 @@ const config ={
     keepalive: 6000
   },
   fsFolder: '.',
-  ftpFolder: '.'
+  ftpFolder: '.',
+  regexp: /\.js$/
 }
 
 ftpMirror(config).then((ftpMirrorEnd) => {
@@ -42,4 +43,3 @@ ftpMirror(config).then((ftpMirrorEnd) => {
 ## TODO
 1. Mirror folders. If there's no folder to copy into, create one.
 2. Enable starting synchronization.
-3. Enable watching only specific files.

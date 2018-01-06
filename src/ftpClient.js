@@ -41,5 +41,7 @@ module.exports = function setupFtpClient(connectionConfig) {
     });
 
     client.connect(connectionConfig);
+
+    /* TODO What if connection fails? */
   });
 };

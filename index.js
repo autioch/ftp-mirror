@@ -6,7 +6,7 @@ const setupFileCopier = require('./src/fileCopier');
 const setupFileRemover = require('./src/fileRemover');
 
 module.exports = function ftpMirror(config) {
-  const { connectionConfig, ftpFolder, fsFolder } = config;
+  const { connectionConfig, ftpFolder, fsFolder, regexp } = config;
 
   return Bluebird
     .all([
@@ -14,8 +14,8 @@ module.exports = function ftpMirror(config) {
       setupFsWatcher(fsFolder)
     ])
     .then(([ftpClient, fsWatcher]) => {
-      const fileCopier = setupFileCopier(ftpClient, fsFolder, ftpFolder);
-      const fileRemover = setupFileRemover(ftpClient, fsFolder, ftpFolder);
+      const fileCopier = setupFileCopier(ftpClient, fsFolder, ftpFolder, regexp);
+      const fileRemover = setupFileRemover(ftpClient, fsFolder, ftpFolder, regexp);
 
       fsWatcher.on('add', fileCopier);
       fsWatcher.on('change', fileCopier);

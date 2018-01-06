@@ -21,11 +21,21 @@ qbLog({
     prefix: 'REMOVE FAIL',
     formatter: qbLog._chalk.bgYellow,
     showTime: true
+  },
+  removeIgnore: {
+    prefix: 'REMOVE IGNORE',
+    formatter: qbLog._chalk.gray,
+    showTime: true
   }
 });
 
-module.exports = function setupFileRemover(client, fsFolder, ftpFolder) {
+module.exports = function setupFileRemover(client, fsFolder, ftpFolder, regexp) {
   return function fileRemove(fileName) {
+    if (!regexp.test(fileName)) {
+      qbLog.removeIgnore(fileName);
+
+      return;
+    }
     const ftpPath = join(ftpFolder, relative(fsFolder, fileName)).replace(/\\/g, '/');
 
     qbLog.removeFs(fileName);

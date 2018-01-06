@@ -21,11 +21,21 @@ qbLog({
     prefix: 'COPY FAIL',
     formatter: qbLog._chalk.bgGreen,
     showTime: true
+  },
+  copyIgnore: {
+    prefix: 'COPY IGNORE',
+    formatter: qbLog._chalk.gray,
+    showTime: true
   }
 });
 
-module.exports = function setupFileCopier(client, fsFolder, ftpFolder) {
+module.exports = function setupFileCopier(client, fsFolder, ftpFolder, regexp) {
   return function fileCopier(fileName) {
+    if (!regexp.test(fileName)) {
+      qbLog.copyIgnore(fileName);
+
+      return;
+    }
     const ftpPath = join(ftpFolder, relative(fsFolder, fileName)).replace(/\\/g, '/');
 
     qbLog.copyFs(fileName);
