@@ -1,18 +1,21 @@
 {
   "name": "ftp-mirror",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bluebird": "^3.5.0",
-    "eslint": "^4.7.2",
-    "eslint-config-qb": "^1.0.0",
-    "ftp": "^0.3.10",
-    "qb-log": "^1.0.1"
+    "bluebird": "3.5.0",
+    "chokidar": "^2.0.0",
+    "ftp": "0.3.10",
+    "just-debounce": "^1.0.0",
+    "on-quit": "^1.0.0",
+    "path-exists": "^3.0.0",
+    "qb-log": "1.0.1"
+  },
+  "devDependencies": {
+    "eslint-config-qb": "1.0.0",
+    "eslint": "4.14.0"
   }
 }

@@ -7,6 +7,7 @@ module.exports = {
       'ignoreRestSiblings': false
     }],
     'id-blacklist': ['off'],
-    'class-methods-use-this': ['off']
+    'class-methods-use-this': ['off'],
+    'no-underscore-dangle': ['off']
   }
 };
